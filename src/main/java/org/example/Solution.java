@@ -3,6 +3,32 @@ package org.example;
 import java.util.*;
 
 public class Solution {
+    public static boolean isValid(String s) {
+        Map<String, String> map = new HashMap<>();
+        Stack<String> stack = new Stack<>();
+        map.put("(",")");
+        map.put("{","}");
+        map.put("[","]");
+        for (Character a : s.toCharArray()){
+            /*pembuka*/
+            if(map.containsKey(a.toString())){
+                stack.add(a.toString());
+            }else
+            /*penutup*/
+            if(map.containsValue(a.toString())){
+                if(stack.isEmpty()) return false;
+                String peek = stack.peek();
+                if(!map.get(peek).equals(a.toString())){
+                    return false;
+                }else{
+                    stack.pop();
+                }
+            }else{
+                return false;
+            }
+        }
+        return stack.isEmpty();
+    }
     public static int romanToInt(String s) {
         Map<String, Integer> symbolValue = new HashMap<>();
         List<String> strQ = new LinkedList<>();

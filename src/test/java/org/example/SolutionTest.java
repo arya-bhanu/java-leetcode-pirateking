@@ -11,4 +11,15 @@ class SolutionTest {
         assertEquals(58, Solution.romanToInt("LVIII"));
         assertEquals(1994, Solution.romanToInt("MCMXCIV"));
     }
+
+    @Test
+    public void Test_Valid_Parentheses(){
+        assertTrue(Solution.isValid("()"));
+        assertTrue(Solution.isValid("()[]{}"));
+        assertFalse(Solution.isValid("(]"));
+        assertTrue(Solution.isValid("([])"));
+        assertFalse(Solution.isValid("([)]"));
+        assertFalse(Solution.isValid("["));
+        assertFalse(Solution.isValid("]"));
+    }
 }
